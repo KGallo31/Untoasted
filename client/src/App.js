@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import {React, useState,useEffect} from 'react'
+import ClockIn from './components/ClockIn'
+import {
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+import Home from './components/Home';
 
 function App() {
+
+  const [user, setUser] = useState(null)
+  const [items,setItems] = useState([])
+
+  useEffect(() => {
+
+  fetch('/items').then(r=> r.json()).then(setItems)
+  },[])
+
+  useEffect(() => {
+    fetch('/me').then(r =>{
+      if(r.ok){
+        r.json().then(setUser)
+      }
+    })
+    .then()
+  },[]
+  )
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <Routes>
+        <Route path='/' element={<ClockIn user={user} setUser={setUser}/>}/>
+        <Route path='/home' element={<Home items={items}/>}/>
+      </Routes>
+      {/* <ClockIn user={user} setUser={setUser}/> */}
+  </div>
   );
 }
 
