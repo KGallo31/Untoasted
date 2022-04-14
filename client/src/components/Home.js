@@ -1,23 +1,21 @@
-import React,{useState,useEffect} from 'react'
-import ItemContainer from './ItemContainer'
-import Cart from './Cart'
+import React, { useState } from "react";
+import ItemContainer from "./ItemContainer";
+import Cart from "./Cart";
 
-function Home({items}) {
+function Home({ items, user, setCartItems,cartItems,setSale }) {
 
-    const [cartItems, setCartItems] = useState([])
-    const changeCart = (item) => {
-        const newCart = [...cartItems,item]
-        setCartItems(newCart)
-    }
-  
+  const changeCart = (item) => {
+    const newCart = [...cartItems, item];
+    setCartItems(newCart);
+  };
+
 
   return (
     <div>
-        <ItemContainer items={items} changeCart={changeCart}/>
-        <Cart cartItems={cartItems}/>
+      <ItemContainer items={items} changeCart={changeCart} />
+      <Cart cartItems={cartItems} isCheckout={false}/>
     </div>
-  )
-
+  );
 }
 
-export default Home
+export default Home;

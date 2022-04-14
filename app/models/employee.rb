@@ -1,6 +1,7 @@
 class Employee < ApplicationRecord
     has_secure_password
     has_many :sales
+    has_many :credit_cards
     validates :username, uniqueness: true
     validate :pin, on: :create
 
