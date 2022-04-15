@@ -1,4 +1,6 @@
 class SalesController < ApplicationController
+    before_action :authorize
+
 
     def create
         # byebug

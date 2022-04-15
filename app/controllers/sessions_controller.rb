@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    before_action :authorize 
+    
     def create
         user = Employee.find_by(username: params[:username])
         if user&.authenticate(params[:password])

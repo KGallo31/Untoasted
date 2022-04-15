@@ -8,7 +8,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   // const [sale,setSale] = useState([])
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([]);
@@ -20,23 +20,31 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("/me")
-      .then((r) => {
-        if (r.ok) {
-          r.json().then(setUser);
-        }else{
-          r.json().then(() => navigate('/'))
-        }
-      })
-      .then();
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then(setUser);
+      } else {
+        r.json().then(() => navigate("/"));
+      }
+    });
   }, []);
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<ClockIn user={user} setUser={setUser} />} />
-        <Route path="/home" element={<Home items={items} user={user} setCartItems={setCartItems} cartItems={cartItems} />} />
-        <Route path='/checkout/:id' element={<CheckOut items={items}/>} />
+        <Route
+          path="/home"
+          element={
+            <Home
+              items={items}
+              user={user}
+              setCartItems={setCartItems}
+              cartItems={cartItems}
+            />
+          }
+        />
+        <Route path="/checkout/:id" element={<CheckOut items={items} />} />
       </Routes>
     </div>
   );

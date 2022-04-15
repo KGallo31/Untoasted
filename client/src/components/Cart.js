@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 
-function Cart({ cartItems, isCheckout}) {
+function Cart({ cartItems, isCheckout }) {
   const navigate = useNavigate();
   const [checkout, setCheckout] = useState(isCheckout);
 
@@ -33,13 +33,13 @@ function Cart({ cartItems, isCheckout}) {
   }
 
   const renderButton = () => {
-      return(
-          <div>
+    return (
+      <div>
         <button onClick={handleCheckOut}>Cash</button>
         <button onClick={handleCheckOut}>Card</button>
-        </div>
-      )
-  }
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -47,7 +47,8 @@ function Cart({ cartItems, isCheckout}) {
         return <CartItem key={item.id} item={item} />;
       })}
       <p>total: {total}</p>
-      {checkout ? <button> hi </button> : renderButton()}
+
+      {!checkout && renderButton()}
     </div>
   );
 }

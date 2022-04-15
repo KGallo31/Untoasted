@@ -1,19 +1,21 @@
 class ChargesController < ApplicationController
     # before_action :authenticate_employee!
     # before_action :find_item
+    before_action :authorize
+
 
 
     def create
         card = Stripe::Token.create({card: {number: params[:card][:number],exp_month: params[:card][:exp_month],exp_year: params[:card][:exp_year],cvc: params[:card][:cvc]}})
-        # byebug
-        Stripe::Charge.create(
+        done = Stripe::Charge.create(
             source: card,
             currency: "usd",
             amount: (params[:total_price] * 100).to_i
         )
+        byebug
         render json: {worked: "worked"},status: :ok
-        rescue Stripe::CardError => e
-        flash[:error] = e.message
+        # rescue Stripe::CardError => e
+        # flash[:error] = e.message
         #     end
     end
 #     def create

@@ -1,13 +1,11 @@
 import React from "react";
 
 function CartItem({ item }) {
-
-
-    // console.log(item)
+  // console.log(item)
   return (
     <div>
       <p>
-        {item.name},{item.price}
+        {item.name}: {item.price}
       </p>
     </div>
   );

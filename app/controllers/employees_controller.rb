@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+    before_action :authorize
+
     def create
         user = Employee.create!(employee_params)
         session[:user_id] = user.id

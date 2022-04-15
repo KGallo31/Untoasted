@@ -1,4 +1,6 @@
 class SaleitemsController < ApplicationController
+    before_action :authorize
+
     def create 
         byebug
         # params[:key].each {|saleitem| Saleitem.create!(sale_id: saleitem.sale_id)}
