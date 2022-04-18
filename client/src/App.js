@@ -23,10 +23,8 @@ function App() {
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        console.log(r)
         r.json().then(setUser);
       } else {
-        // console.log(r)  
         r.json().then(() => navigate("/"));
       }
     });

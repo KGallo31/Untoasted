@@ -2,8 +2,6 @@ class SaleitemsController < ApplicationController
     before_action :authorize
 
     def create 
-        byebug
-        # params[:key].each {|saleitem| Saleitem.create!(sale_id: saleitem.sale_id)}
         render json: Saleitem.create!(saleitems_params), status: :created
     end
 
@@ -20,9 +18,7 @@ class SaleitemsController < ApplicationController
         arr = []
         a.each { |element| 
             arr << Item.find_by(id: element.item_id)
-            # byebug
         }
-        # byebug
         render json: {"items": arr}
     end
 

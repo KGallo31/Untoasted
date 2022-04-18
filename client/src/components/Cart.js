@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 function Cart({ cartItems, isCheckOut}) {
   const navigate = useNavigate();

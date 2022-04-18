@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemContainer from "./ItemContainer";
 import Cart from "./Cart";
 
 function Home({ items, setCartItems, cartItems, isCardPayment}) {
-    
+
   const changeCart = (item) => {
     const newCart = [...cartItems, item];
     setCartItems(newCart);
