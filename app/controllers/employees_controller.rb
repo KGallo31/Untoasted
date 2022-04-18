@@ -21,6 +21,7 @@ class EmployeesController < ApplicationController
         employee = Employee.find_by(id: params[:id])
         employee.clocked_in = params[:clocked_in]
         employee.save
+        session.delete :user_id unless employee.clocked_in
         render json: employee, status: :ok
     end
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 
 function CheckOut({ }) {
   let params = useParams();
+  let navigate = useNavigate();
   const [cardNumber, setCardNumber] = useState("");
   const [cardMonth, setCardMonth] = useState("");
   const [cardYear, setCardYear] = useState("");
@@ -49,8 +50,7 @@ function CheckOut({ }) {
       body: JSON.stringify(data),
     })
       .then((r) => r.json())
-      .then(console.log);
-      form.reset()
+      .then(() => navigate(`/receipt/${params.id}`) );
   };
 
   const renderCheckOut = () => {

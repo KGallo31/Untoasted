@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :sales, only: [:show,:create]
   resources :saleitems, only: [:show,:create,:index]
   resources :charges, only: [:new, :create]
+  resources :receipts, only: [:show]
 
   mount StripeEvent::Engine, at: '/payments'
 

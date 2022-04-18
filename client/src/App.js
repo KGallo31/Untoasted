@@ -46,9 +46,8 @@ function App() {
             />
           }
         />
-        <Route path="/checkout/:id" element={<CheckOut items={items} isCardPayment={isCardPayment}/>}>
-          <Route path="receipt" element={<Receipt/> }/>
-        </Route>
+        <Route path="/checkout/:id" element={<CheckOut items={items} isCardPayment={isCardPayment}/>}/>
+        <Route path="receipt/:id" element={<Receipt/> }/>
       </Routes>
     </div>
   );
