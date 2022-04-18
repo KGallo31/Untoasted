@@ -40,134 +40,94 @@ function ClockIn({ user, setUser }) {
 
   if (!user || user.errors) {
     return (
-        <div style={{width: "auto",display: "flex",flexDirection: "row",alignContent: "center"}}>
-      <div className="lander-flex">
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <table>
-            <tr>
-              <td>
-                <input
-                  placeholder="Enter Username"
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(1)}
-                    className="btn btn-primary"
-                  >
+      <div style={{ width: "auto"}}>
+        <div className="lander-flex">
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <table style={{fontFamily: 'impact', fontSize: '40px'}}>
+              <tr>
+                <td></td>
+                <td>
+                  <input style={{width: '100%'}}
+                    placeholder="Enter Username"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </td>
+                <td></td>
+              </tr>
+              <tr style={{width: '300px'}}>
+                <td style={{textAlign: 'right'}}>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(1)}>
                     1
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(2)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(2)}>
                     2
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(3)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(3)}>
                     3
                   </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(4)}
-                    className="btn btn-primary"
-                  >
+                </td>
+              </tr>
+              <tr style={{width: '300px'}}>
+                <td style={{textAlign: 'right'}}>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(4)}>
                     4
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(5)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(5)}>
                     5
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(6)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(6)}>
                     6
                   </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(7)}
-                    className="btn btn-primary"
-                  >
+                </td>
+              </tr>
+              <tr style={{width: '300px'}}>
+                <td style={{textAlign: 'right'}}>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(7)}>
                     7
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(8)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(8)}>
                     8
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(9)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button className='calc-button' style={{width: '100%'}} type="button" onClick={() => changePin(9)}>
                     9
                   </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => setPin("")}
-                    className="btn btn-primary"
-                  >
+                </td>
+              </tr>
+              <tr style={{width: '300px'}}>
+                <td>
+                  <button type="button" className='calc-button' onClick={() => setPin("")} style={{width: '105px'}}>
                     clear
                   </button>
-              </td>
-              <td>
-                  <button
-                    type="button"
-                    onClick={() => changePin(0)}
-                    className="btn btn-primary"
-                  >
+                </td>
+                <td>
+                  <button type="button" className='calc-button' onClick={() => changePin(0)} style={{width: '105px'}}>
                     0
                   </button>
-              </td>
-              <td>
-                  <button type="submit" className="btn btn-primary">
-                    enter{" "}
-                  </button>
-              </td>
-              <input className="form-control" type="password" value={pin} />
-            </tr>
-          </table>
-        </form>
-      </div>
+                </td>
+                <td>
+                  <button type="submit" className='calc-button' style={{width: '105px'}}>enter </button>
+                </td>
+              </tr>
+              {/* <tr>
+                <td>
+                  <input className="form-control" type="password" value={pin} />
+                </td>
+              </tr> */}
+            </table>
+          </form>
+        </div>
       </div>
     );
   }

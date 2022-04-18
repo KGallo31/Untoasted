@@ -3,7 +3,7 @@ import Item from "./Item";
 
 function ItemContainer({ items, changeCart }) {
   return (
-    <div>
+    <div style={{width: '100%', display: 'flex', flexFlow: 'row wrap',}}>
       {items.map((item) => {
         return <Item key={item.id} item={item} changeCart={changeCart} />;
       })}

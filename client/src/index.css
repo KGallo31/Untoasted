@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.lander-flex {
+  display: flex; 
+  flex-direction: column;
+  width: 20%;
+  justify-content: center;
+  margin-left: 40%;
+  margin-right:  40%;
+  margin-top: 200px;
+}
+
+.calc-button {
+  color: white;
+  background-color: black;
+}
+
+.calc-button:hover {
+  background-color: darkgray;
+}
+
+.calc-button:active {
+  background-color: lime;
+}
