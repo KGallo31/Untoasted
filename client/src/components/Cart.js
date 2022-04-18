@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
-function Cart({ cartItems, isCheckout }) {
+function Cart({ cartItems, isCheckOut}) {
   const navigate = useNavigate();
-  const [checkout, setCheckout] = useState(isCheckout);
+  const [checkout, setCheckout] = useState(isCheckOut); 
 
   let total = 0;
 
@@ -12,7 +13,7 @@ function Cart({ cartItems, isCheckout }) {
   cartItems.forEach((e) => newArr.push(e.price));
   total = newArr.reduce((cv, pv) => cv + pv, 0);
 
-  async function handleCheckOut() {
+  async function handleCheckOut(e) {
     const newSale = {
       total_price: total,
       cart_items: cartItems,
@@ -32,23 +33,13 @@ function Cart({ cartItems, isCheckout }) {
       .then();
   }
 
-  const renderButton = () => {
-    return (
-      <div>
-        <button onClick={handleCheckOut}>Cash</button>
-        <button onClick={handleCheckOut}>Card</button>
-      </div>
-    );
-  };
-
   return (
     <div>
       {cartItems.map((item) => {
         return <CartItem key={item.id} item={item} />;
       })}
       <p>total: {total}</p>
-
-      {!checkout && renderButton()}
+      {checkout && <button onClick={handleCheckOut}>checkout</button>}
     </div>
   );
 }

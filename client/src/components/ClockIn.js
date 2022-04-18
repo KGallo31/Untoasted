@@ -16,7 +16,7 @@ function ClockIn({ user, setUser }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loggingInUser),
     })
-      .then((r) => r.json())
+      .then((r) =>r.json())
       .then(setUser);
   };
 
@@ -48,8 +48,9 @@ function ClockIn({ user, setUser }) {
         }
       });
   };
+  console.log(user)
 
-  if (!user) {
+  if (!user || user.errors) {
     return (
       <div className="container">
         <form onSubmit={(e) => handleSubmit(e)}>

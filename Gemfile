@@ -14,6 +14,9 @@ gem 'bcrypt', '~> 3.1.7'
 #Stripe (Card Payment)
 gem 'stripe'
 gem 'stripe_event'
+#Custome Serializer (render json output)
+gem 'active_model_serializers'
+
   
 group :test do
   gem 'stripe-ruby-mock'

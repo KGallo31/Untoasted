@@ -3,27 +3,30 @@ import ClockIn from "./components/ClockIn";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CheckOut from "./components/CheckOut";
+import Receipt from "./components/Receipt";
 
 function App() {
+
   const [cartItems, setCartItems] = useState([]);
-  // const [sale,setSale] = useState([])
-
-  const navigate = useNavigate();
-
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([]);
+  const [isCardPayment, setIsCardPayment] = useState(false)
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/items")
       .then((r) => r.json())
       .then(setItems);
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
+        console.log(r)
         r.json().then(setUser);
       } else {
+        // console.log(r)  
         r.json().then(() => navigate("/"));
       }
     });
@@ -41,10 +44,13 @@ function App() {
               user={user}
               setCartItems={setCartItems}
               cartItems={cartItems}
+              setIsCardPayment={setIsCardPayment}
             />
           }
         />
-        <Route path="/checkout/:id" element={<CheckOut items={items} />} />
+        <Route path="/checkout/:id" element={<CheckOut items={items} isCardPayment={isCardPayment}/>}>
+          <Route path="receipt" element={<Receipt/> }/>
+        </Route>
       </Routes>
     </div>
   );

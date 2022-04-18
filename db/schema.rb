@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_151435) do
+ActiveRecord::Schema.define(version: 2022_04_18_024817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "credit_cards", force: :cascade do |t|
-    t.string "digits"
-    t.integer "month"
-    t.integer "year"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -40,6 +32,20 @@ ActiveRecord::Schema.define(version: 2022_04_14_151435) do
     t.integer "quantity"
   end
 
+  create_table "receiptitems", force: :cascade do |t|
+    t.bigint "receipt_id", null: false
+    t.bigint "item_id", null: false
+    t.index ["item_id"], name: "index_receiptitems_on_item_id"
+    t.index ["receipt_id"], name: "index_receiptitems_on_receipt_id"
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.float "total_price"
+    t.integer "last4"
+    t.string "card_type"
+    t.date "date_processed"
+  end
+
   create_table "saleitems", force: :cascade do |t|
     t.bigint "sale_id", null: false
     t.bigint "item_id", null: false
@@ -53,13 +59,8 @@ ActiveRecord::Schema.define(version: 2022_04_14_151435) do
     t.index ["employee_id"], name: "index_sales_on_employee_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "receiptitems", "items"
+  add_foreign_key "receiptitems", "receipts"
   add_foreign_key "saleitems", "items"
   add_foreign_key "saleitems", "sales"
   add_foreign_key "sales", "employees"

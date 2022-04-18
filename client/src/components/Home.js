@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ItemContainer from "./ItemContainer";
 import Cart from "./Cart";
 
-function Home({ items, user, setCartItems, cartItems, setSale }) {
+function Home({ items, setCartItems, cartItems, isCardPayment}) {
+    
   const changeCart = (item) => {
     const newCart = [...cartItems, item];
     setCartItems(newCart);
@@ -11,7 +12,7 @@ function Home({ items, user, setCartItems, cartItems, setSale }) {
   return (
     <div>
       <ItemContainer items={items} changeCart={changeCart} />
-      <Cart cartItems={cartItems} isCheckout={false} />
+      <Cart cartItems={cartItems} isCardPayment={isCardPayment} isCheckOut={true}/>
     </div>
   );
 }

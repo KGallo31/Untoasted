@@ -12,8 +12,24 @@ class ChargesController < ApplicationController
             currency: "usd",
             amount: (params[:total_price] * 100).to_i
         )
+        # time = Time.new
+
+
+        receipt = Receipt.create(total_price: params[:total_price],last4: done[:payment_method_details][:card][:last4], card_type: done[:payment_method_details][:card][:brand],date_processed: Time.new)
+       
+        arr = Saleitem.where(sale_id: params[:sale_id]).pluck(:item_id).each {|itemid| Receiptitem.create(receipt_id: receipt.id,item_id: itemid)}
         byebug
-        render json: {worked: "worked"},status: :ok
+        render json: receipt,status: :ok
+    rescue Stripe::CardError => e
+        render json: {error: e.error.message}, status: e.http_status
+        # render json: {error: "Status is: #{e.http_status}"}
+        # render json: {error: "Type is: #{e.error.type}"}
+        # render json: {error: "Charge ID is: #{e.error.charge}"}
+        # The following fields are optional
+        # render json: {error: "Code is: #{e.error.code}"} if e.error.code
+        # render json: {error: "Decline code is: #{e.error.decline_code}"} if e.error.decline_code
+        # render json: {error: "Param is: #{e.error.param}"} if e.error.param
+        # render json:  {error: "Message is: #{e.error.message}"} if e.error.message
         # rescue Stripe::CardError => e
         # flash[:error] = e.message
         #     end
