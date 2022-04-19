@@ -42,6 +42,10 @@ function ClockIn({ user, setUser }) {
     return (
       <div style={{ width: "auto"}}>
         <div className="lander-flex">
+            <div style={{flexGrow: "4"}}>
+                <img src="https://res.cloudinary.com/april-skrine/image/upload/v1650382762/untoastedlogo_ws2ro4.jpg" alt="logo.png"/>
+            </div>
+            <div>
           <form onSubmit={(e) => handleSubmit(e)}>
             <table style={{fontFamily: 'impact', fontSize: '40px'}}>
               <tr>
@@ -127,6 +131,7 @@ function ClockIn({ user, setUser }) {
               </tr> */}
             </table>
           </form>
+          </div>
         </div>
       </div>
     );
