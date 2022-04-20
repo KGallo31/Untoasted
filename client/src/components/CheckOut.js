@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
+import { Link } from "react-router-dom";
 
 function CheckOut({}) {
   let params = useParams();
@@ -20,16 +21,34 @@ function CheckOut({}) {
       .then((d) => setCurrentCart(d.items));
   }, []);
 
-  let total = 0;
-
   const changeCashAmount = (num) => {
-    const cash = cashAmount + num;
-    setCashAmount(cash);
+    // const cash = cashAmount + num;
+    // push number into array
+    // insert decimal length - 2
+    const arr = [...cashAmount, num];
+    if (!arr.includes(".")) {
+      if (arr.length > 2) {
+        arr.splice(arr.length - 1, 0, ".");
+      }
+    }
+    // setCashAmount(() => {
+    //   const newNum = cashAmount * 10 + num
+    //   return newNum
+    // })
+    setCashAmount(arr);
   };
 
-  const newArr = [];
-  currentCart.forEach((e) => newArr.push(e.price));
-  total = newArr.reduce((cv, pv) => cv + pv, 0);
+  let subTotal = 0;
+  let total = 0;
+  let tax = 0.06;
+
+  const itemPrice = [];
+  currentCart.forEach((e) => {
+    itemPrice.push(e.price);
+  });
+  subTotal = itemPrice.reduce((cv, pv) => cv + pv, 0);
+  tax = tax * itemPrice.length;
+  total = subTotal + subTotal * tax;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +68,31 @@ function CheckOut({}) {
       body: JSON.stringify(data),
     })
       .then((r) => r.json())
-      .then(() => navigate(`/receipt/${params.id}`));
+      .then((d) => {
+        console.log(d);
+        if (d.error) {
+          alert(d.error);
+        } else {
+          navigate(`/receipt/${d.id}`);
+        }
+      });
+  };
+
+  const handleCashSubmit = (e) => {
+    e.preventDefault();
+    const newCash = parseFloat(cashAmount.join(""));
+    const cashChange = newCash - total;
+    if (cashChange.toFixed(2) < 0.0) {
+      alert("Insignificant Amount Of Cash!!!");
+    } else {
+      setCashAmount(newCash);
+      alert(
+        `Total: $${total.toFixed(
+          2
+        )} Cash Paid: $${newCash} Change: $${cashChange.toFixed(2)}`
+      );
+      navigate("/home");
+    }
   };
 
   const renderCheckOut = () => {
@@ -129,11 +172,9 @@ function CheckOut({}) {
     }
 
     return (
-      <div style={{ width: "auto" }}>
         <div className="check-out-flex">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <h1 style={{alignSelf: "flex-end"}}>{cashAmount}</h1>
-            
+          <form onSubmit={(e) => handleCashSubmit(e)}>
+            <h1 style={{ alignSelf: "flex-end" }}>${cashAmount}</h1>
             <table style={{ fontFamily: "impact", fontSize: "40px" }}>
               <tr style={{ width: "300px" }}>
                 <td style={{ textAlign: "right" }}>
@@ -242,10 +283,7 @@ function CheckOut({}) {
                   </button>
                 </td>
                 <td>
-                  <button
-                    type="submit"
-                    className="calc-button"
-                  >
+                  <button type="submit" className="calc-button">
                     enter{" "}
                   </button>
                 </td>
@@ -254,32 +292,93 @@ function CheckOut({}) {
           </form>
           <button
             className="calc-button"
-            style={{ width: "495px" , fontFamily: "impact", fontSize: "40px" }}
-            onClick={() => setCashAmount(total)}
+            style={{ width: "495px", fontFamily: "impact", fontSize: "40px" }}
+            onClick={() => {
+              const stringTotal = total.toFixed(2).toString()
+              
+              setCashAmount(stringTotal.split(''))
+            }}
           >
             Exact Amount
           </button>
         </div>
-      </div>
     );
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "row", flexWrap: "no-wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        marginTop: "-5%",
+      }}
+    >
       <div
         style={{
-          // flexGrow: "1",
-          border: "5px solid lightgray",
-          margin: "0.5%",
-          padding: "10px",
+          display: "flex",
+          flexDirection: "column",
+          width: "20%",
+          justifyContent: "center",
+          marginLeft: ".5%",
         }}
       >
-        <Cart cartItems={currentCart} isCheckout={false} />
+        <div
+          style={{
+            flexGrow: "0",
+            border: "5px solid lightgray",
+            margin: "0.5%",
+            marginRight: "-9px",
+            padding: "10px",
+            borderRadius: "10px",
+            width: "100%",
+            backgroundColor: "darkblue",
+          }}
+        >
+          <Cart cartItems={currentCart} isCheckout={false} />
 
-        <button onClick={() => setIsCard(false)}>cash</button>
-        <button onClick={() => setIsCard(true)}>card</button>
+          <div style={{ border: "5px solid black", padding: "" }}>
+            <button
+              style={{ width: "50%", height: "100%", fontSize: "40px" }}
+              onClick={() => setIsCard(false)}
+            >
+              cash
+            </button>
+            <button
+              style={{
+                width: "50%",
+                height: "100%",
+                fontSize: "40px",
+              }}
+              onClick={() => setIsCard(true)}
+            >
+              card
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            alignSelf: "center",
+            width: "100%",
+            marginLeft: "auto",
+            marginRight: "-15%",
+          }}
+        >
+          <Link to="/home">
+            <button className="Cart-button">Home</button>
+          </Link>
+        </div>
       </div>
-      {renderCheckOut()}
+      <div
+        style={{
+          alignSelf: "center",
+          width: "50%",
+          marginTop: "-5%",
+          marginLeft: "0%",
+        }}
+      >
+        {renderCheckOut()}
+      </div>
     </div>
   );
 }

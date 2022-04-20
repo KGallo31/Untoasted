@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CheckOut from "./components/CheckOut";
 import Receipt from "./components/Receipt";
+import CartItem from "./components/CartItem";
 
 function App() {
 
@@ -29,11 +30,36 @@ function App() {
       }
     });
   }, []);
+  const clockIn = () => {
+    const c = !user.clocked_in;
+    fetch(`/clockin/${user.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        clocked_in: c,
+      }),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (user.clocked_in) {
+          setUser(null);
+        } else {
+          setUser(d);
+        }
+      });
+  };
 
+  const removeCartItem = (item) => {
+    const newCart = cartItems.filter((ci) => ci.id!=item.id)
+    console.log(newCart)
+    setCartItems(newCart)
+  }
+
+  // console.log(user)
   return (
     <div>
       <Routes>
-        <Route path="/" element={<ClockIn user={user} setUser={setUser} />} />
+        <Route path="/" element={<ClockIn clockIn={clockIn} user={user} setUser={setUser} />} />
         <Route
           path="/home"
           element={
@@ -43,6 +69,8 @@ function App() {
               setCartItems={setCartItems}
               cartItems={cartItems}
               setIsCardPayment={setIsCardPayment}
+              removeCartItem={removeCartItem}
+              clockIn={clockIn}
             />
           }
         />
