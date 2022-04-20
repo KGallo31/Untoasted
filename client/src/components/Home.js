@@ -43,7 +43,6 @@ function Home({
             isCardPayment={isCardPayment}
             isCheckOut={true}
             setCartItems={setCartItems}
-            removeCartItem={removeCartItem}
           />
         </div>
         <div style={{ alignSelf: "center" }}>

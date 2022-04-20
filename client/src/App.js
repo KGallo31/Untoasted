@@ -4,7 +4,6 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CheckOut from "./components/CheckOut";
 import Receipt from "./components/Receipt";
-import CartItem from "./components/CartItem";
 
 function App() {
 
@@ -49,13 +48,6 @@ function App() {
       });
   };
 
-  const removeCartItem = (item) => {
-    const newCart = cartItems.filter((ci) => ci.id!=item.id)
-    console.log(newCart)
-    setCartItems(newCart)
-  }
-
-  // console.log(user)
   return (
     <div>
       <Routes>

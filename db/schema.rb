@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_033314) do
+ActiveRecord::Schema.define(version: 2022_04_18_024817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 2022_04_18_033314) do
     t.integer "last4"
     t.string "card_type"
     t.date "date_processed"
-    t.bigint "receiptitmes_id"
-    t.index ["receiptitmes_id"], name: "index_receipts_on_receiptitmes_id"
   end
 
   create_table "saleitems", force: :cascade do |t|

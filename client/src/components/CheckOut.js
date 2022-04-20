@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 function CheckOut({}) {
   let params = useParams();
   let navigate = useNavigate();
+  let subTotal = 0;
+  let total = 0;
+  let tax = 0.06;
+  const itemPrice = [];
   const [cardNumber, setCardNumber] = useState("");
   const [cardMonth, setCardMonth] = useState("");
   const [cardYear, setCardYear] = useState("");
@@ -22,27 +26,16 @@ function CheckOut({}) {
   }, []);
 
   const changeCashAmount = (num) => {
-    // const cash = cashAmount + num;
-    // push number into array
-    // insert decimal length - 2
     const arr = [...cashAmount, num];
     if (!arr.includes(".")) {
       if (arr.length > 2) {
         arr.splice(arr.length - 1, 0, ".");
       }
     }
-    // setCashAmount(() => {
-    //   const newNum = cashAmount * 10 + num
-    //   return newNum
-    // })
     setCashAmount(arr);
   };
 
-  let subTotal = 0;
-  let total = 0;
-  let tax = 0.06;
 
-  const itemPrice = [];
   currentCart.forEach((e) => {
     itemPrice.push(e.price);
   });
@@ -311,7 +304,7 @@ function CheckOut({}) {
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        marginTop: "-5%",
+        marginTop: "-3%",
       }}
     >
       <div
@@ -365,7 +358,7 @@ function CheckOut({}) {
           }}
         >
           <Link to="/home">
-            <button className="Cart-button">Home</button>
+            <button onClick={goingHome} className="Cart-button">Home</button>
           </Link>
         </div>
       </div>

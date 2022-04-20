@@ -1,6 +1,6 @@
 import React from "react";
 
-function CartItem({ item, removeCartItem }) {
+function CartItem({ item }) {
   return (
     <div
       style={{

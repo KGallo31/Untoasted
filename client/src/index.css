@@ -167,6 +167,7 @@ code {
 
 .Item-button:hover{
   background-color: #00008B;
+  color: whitesmoke;
 }
 
 .Cart-button{
