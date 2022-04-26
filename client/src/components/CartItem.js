@@ -1,6 +1,6 @@
 import React from "react";
 
-function CartItem({ item }) {
+function CartItem({ item,removeCartItem }) {
   return (
     <div
       style={{
@@ -16,6 +16,7 @@ function CartItem({ item }) {
     >
       <p style={{ paddingLeft: "1px", alignSelf: "flex-start" }}>{item.name}</p>
       <p style={{ paddingRight: "1px", alignSelf: "flex-end" }}>{item.price}</p>
+      {/* <button onClick={() => removeCartItem(item)}>X</button> */}
     </div>
   );
 }

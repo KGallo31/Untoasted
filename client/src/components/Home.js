@@ -31,7 +31,7 @@ function Home({
             flexGrow: "1",
             border: "5px solid lightgray",
             margin: ".5%",
-            marginRight: "-9px",
+            marginRight: "-3px",
             padding: "10px",
             borderRadius: "10px",
             width: "100%",
@@ -43,6 +43,7 @@ function Home({
             isCardPayment={isCardPayment}
             isCheckOut={true}
             setCartItems={setCartItems}
+            removeCartItem={removeCartItem}
           />
         </div>
         <div style={{ alignSelf: "center" }}>
@@ -63,11 +64,12 @@ function Home({
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          flexGrow: "2",
+          flexGrow: "1",
           marginLeft: "2%",
+          width: '60%'
         }}
       >
-        <ItemContainer items={items} changeCart={changeCart} />
+        <ItemContainer  items={items} changeCart={changeCart} />
       </div>
     </div>
   );

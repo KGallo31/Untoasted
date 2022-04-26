@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Receipt() {
+function Receipt({setCartItems}) {
   const [currentReceipt, setCurrentReceipt] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`/receipts/${params.id}`)
       .then((r) => r.json())
       .then(setCurrentReceipt);
   }, []);
+
+  const goingHome = () => {
+    setCartItems([])
+    navigate('/home')
+  }
 
   if (currentReceipt) {
     return (
@@ -69,9 +75,7 @@ function Receipt() {
           </div>
         </div>
         <div>
-          <Link to="/home">
-            <button className="Receipt-button">Home</button>
-          </Link>
+            <button onClick={goingHome} className="Receipt-button">Home</button>
         </div>
       </div>
     );

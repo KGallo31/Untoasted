@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
 
-function CheckOut({}) {
+function CheckOut({ setCartItems }) {
   let params = useParams();
   let navigate = useNavigate();
   let subTotal = 0;
@@ -32,9 +32,14 @@ function CheckOut({}) {
         arr.splice(arr.length - 1, 0, ".");
       }
     }
+    const findDecimal = (element) => element === ".";
+    const indexOfDecimal = arr.findIndex(findDecimal);
+    if (arr.slice(indexOfDecimal).length > 3) {
+      arr.splice(indexOfDecimal, 1);
+      arr.splice(indexOfDecimal + 1, indexOfDecimal + 2, ".", 0, 0);
+    }
     setCashAmount(arr);
   };
-
 
   currentCart.forEach((e) => {
     itemPrice.push(e.price);
@@ -85,6 +90,7 @@ function CheckOut({}) {
         )} Cash Paid: $${newCash} Change: $${cashChange.toFixed(2)}`
       );
       navigate("/home");
+      setCartItems([]);
     }
   };
 
@@ -165,136 +171,136 @@ function CheckOut({}) {
     }
 
     return (
-        <div className="check-out-flex">
-          <form onSubmit={(e) => handleCashSubmit(e)}>
-            <h1 style={{ alignSelf: "flex-end" }}>${cashAmount}</h1>
-            <table style={{ fontFamily: "impact", fontSize: "40px" }}>
-              <tr style={{ width: "300px" }}>
-                <td style={{ textAlign: "right" }}>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(1)}
-                  >
-                    1
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(2)}
-                  >
-                    2
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(3)}
-                  >
-                    3
-                  </button>
-                </td>
-              </tr>
-              <tr style={{ width: "300px" }}>
-                <td style={{ textAlign: "right" }}>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(4)}
-                  >
-                    4
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(5)}
-                  >
-                    5
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(6)}
-                  >
-                    6
-                  </button>
-                </td>
-              </tr>
-              <tr style={{ width: "300px" }}>
-                <td style={{ textAlign: "right" }}>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(7)}
-                  >
-                    7
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(8)}
-                  >
-                    8
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="calc-button"
-                    type="button"
-                    onClick={() => changeCashAmount(9)}
-                  >
-                    9
-                  </button>
-                </td>
-              </tr>
-              <tr style={{ width: "300px" }}>
-                <td>
-                  <button
-                    type="button"
-                    className="calc-button"
-                    onClick={() => setCashAmount("")}
-                  >
-                    clear
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className="calc-button"
-                    onClick={() => changeCashAmount(0)}
-                  >
-                    0
-                  </button>
-                </td>
-                <td>
-                  <button type="submit" className="calc-button">
-                    enter{" "}
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </form>
-          <button
-            className="calc-button"
-            style={{ width: "495px", fontFamily: "impact", fontSize: "40px" }}
-            onClick={() => {
-              const stringTotal = total.toFixed(2).toString()
-              
-              setCashAmount(stringTotal.split(''))
-            }}
-          >
-            Exact Amount
-          </button>
-        </div>
+      <div className="check-out-flex">
+        <form onSubmit={(e) => handleCashSubmit(e)}>
+          <h1 style={{ alignSelf: "flex-end" }}>${cashAmount}</h1>
+          <table style={{ fontFamily: "impact", fontSize: "40px" }}>
+            <tr style={{ width: "300px" }}>
+              <td style={{ textAlign: "right" }}>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(1)}
+                >
+                  1
+                </button>
+              </td>
+              <td>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(2)}
+                >
+                  2
+                </button>
+              </td>
+              <td>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(3)}
+                >
+                  3
+                </button>
+              </td>
+            </tr>
+            <tr style={{ width: "300px" }}>
+              <td style={{ textAlign: "right" }}>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(4)}
+                >
+                  4
+                </button>
+              </td>
+              <td>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(5)}
+                >
+                  5
+                </button>
+              </td>
+              <td>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(6)}
+                >
+                  6
+                </button>
+              </td>
+            </tr>
+            <tr style={{ width: "300px" }}>
+              <td style={{ textAlign: "right" }}>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(7)}
+                >
+                  7
+                </button>
+              </td>
+              <td>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(8)}
+                >
+                  8
+                </button>
+              </td>
+              <td>
+                <button
+                  className="calc-button"
+                  type="button"
+                  onClick={() => changeCashAmount(9)}
+                >
+                  9
+                </button>
+              </td>
+            </tr>
+            <tr style={{ width: "300px" }}>
+              <td>
+                <button
+                  type="button"
+                  className="calc-button"
+                  onClick={() => setCashAmount("")}
+                >
+                  clear
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="calc-button"
+                  onClick={() => changeCashAmount(0)}
+                >
+                  0
+                </button>
+              </td>
+              <td>
+                <button type="submit" className="calc-button">
+                  enter{" "}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+        <button
+          className="calc-button"
+          style={{ width: "495px", fontFamily: "impact", fontSize: "40px" }}
+          onClick={() => {
+            const stringTotal = total.toFixed(2).toString();
+
+            setCashAmount(stringTotal.split(""));
+          }}
+        >
+          Exact Amount
+        </button>
+      </div>
     );
   };
 
@@ -326,6 +332,8 @@ function CheckOut({}) {
             borderRadius: "10px",
             width: "100%",
             backgroundColor: "darkblue",
+            height: "auto%",
+            marginTop: "30%",
           }}
         >
           <Cart cartItems={currentCart} isCheckout={false} />
@@ -358,7 +366,7 @@ function CheckOut({}) {
           }}
         >
           <Link to="/home">
-            <button onClick={goingHome} className="Cart-button">Home</button>
+            <button className="Cart-button">Home</button>
           </Link>
         </div>
       </div>

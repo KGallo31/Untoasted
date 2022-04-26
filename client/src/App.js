@@ -48,6 +48,17 @@ function App() {
       });
   };
 
+  // const removeCartItem = (item) => {
+  //   const findItemIndex = (element) => {
+  //     console.log(element,item)
+  //     return element.id != item.id
+  //   }
+  //   const indexCurrentItem = cartItems.findIndex(findItemIndex)
+  //   console.log(cartItems.findIndex(findItemIndex))
+  //   const newCart = cartItems.splice(indexCurrentItem)
+  //   setCartItems(newCart) 
+  // }
+
   return (
     <div>
       <Routes>
@@ -61,13 +72,13 @@ function App() {
               setCartItems={setCartItems}
               cartItems={cartItems}
               setIsCardPayment={setIsCardPayment}
-              removeCartItem={removeCartItem}
               clockIn={clockIn}
+              // removeCartItem={removeCartItem}
             />
           }
         />
-        <Route path="/checkout/:id" element={<CheckOut items={items} isCardPayment={isCardPayment}/>}/>
-        <Route path="receipt/:id" element={<Receipt/> }/>
+        <Route path="/checkout/:id" element={<CheckOut setCartItems={setCartItems}/>}/>
+        <Route path="receipt/:id" element={<Receipt setCartItems={setCartItems}/> }/>
       </Routes>
     </div>
   );

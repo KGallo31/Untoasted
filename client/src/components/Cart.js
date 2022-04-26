@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 
-function Cart({ cartItems, isCheckOut, setCartItems}) {
+function Cart({ cartItems, isCheckOut, setCartItems,removeCartItem}) {
   const navigate = useNavigate();
   const [checkout, setCheckout] = useState(isCheckOut);
 
@@ -86,6 +86,7 @@ function Cart({ cartItems, isCheckOut, setCartItems}) {
             <CartItem
               key={item.id}
               item={item}
+              removeCartItem={removeCartItem}
             />
           );
         })}
