@@ -10,11 +10,6 @@ class ChargesController < ApplicationController
             currency: "usd",
             amount: (params[:total_price] * 100).to_i
         )
-
-
-
-
-        
         receipt = Receipt.create(total_price: params[:total_price],last4: done[:payment_method_details][:card][:last4], card_type: done[:payment_method_details][:card][:brand],date_processed: Time.new)
         Saleitem.where(sale_id: params[:sale_id]).pluck(:item_id).each {|itemid|
             currentItem = Item.find(itemid)

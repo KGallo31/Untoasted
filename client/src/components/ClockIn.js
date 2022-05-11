@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 
 function ClockIn({ user, setUser,clockIn}) {
   const [pin, setPin] = useState("");
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const loggingInUser = {
-      username: username,
-      password: pin,
+      username: pin,
     };
     fetch("/login", {
       method: "POST",
@@ -39,15 +38,6 @@ function ClockIn({ user, setUser,clockIn}) {
             <form onSubmit={(e) => handleSubmit(e)}>
               <table style={{ fontFamily: "impact", fontSize: "40px" }}>
                 <tr>
-                  <td></td>
-                  <td>
-                    <input
-                      style={{ width: "100%" }}
-                      placeholder="Enter Username"
-                      onChange={(e) => setUsername(e.target.value)}
-                    />
-                  </td>
-                  <td></td>
                 </tr>
                 <tr style={{ width: "300px" }}>
                   <td style={{ textAlign: "right" }}>
@@ -191,7 +181,7 @@ function ClockIn({ user, setUser,clockIn}) {
         <button onClick={clockIn}>Clock Out</button>
       ) : (
         <Link to="/home">
-          <button onClick={clockIn}>Clock In</button>
+          <button className='' onClick={clockIn}>Clock In</button>
         </Link>
       )}
     </div>

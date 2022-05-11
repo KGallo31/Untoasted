@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
 
-function CheckOut({ setCartItems }) {
+function CheckOut({ setCartItems, setItems }) {
   let params = useParams();
   let navigate = useNavigate();
   let subTotal = 0;
@@ -89,8 +89,15 @@ function CheckOut({ setCartItems }) {
           2
         )} Cash Paid: $${newCash} Change: $${cashChange.toFixed(2)}`
       );
-      navigate("/home");
+      fetch("/cash-check-out", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: currentCart }),
+      })
+        .then((r) => r.json())
+        .then(setItems);
       setCartItems([]);
+      navigate("/home");
     }
   };
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch '/clockin/:id', to: "employees#clock_in"
   get '/currentCart/:id', to: "saleitems#find_cart"
   post '/add_cart', to: "sales#new_cart"
+  patch '/cash-check-out', to: "items#cash_check_out"
   resources :items, only: [:index,:show]
   resources :sales, only: [:show,:create]
   resources :saleitems, only: [:show,:create,:index]

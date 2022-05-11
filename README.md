@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WELCOME TO UNTOASTED POS!
 
-Things you may want to cover:
+This is a POS (Point-Of-Sale) software that up to date with industry standard. The intended user of the software are resturant workers placing an order rececived from a customer. The user can use the software to login in via a pin number, clock in and clock out, take order, keep track of inventory, processes payment with cash, and processes payment via external API with costum receipt.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To login use pin 1111 and click enter on the number pad. Then clock in when displayed using the labled clock in button. Then you are able to take orders. 
