@@ -19,8 +19,7 @@ function App() {
       .then((items) => {
         setItems(items.sort((a, b) => a.id - b.id));
       });
-  }, [user]);
-  console.log(items.sort((a, b) => a.id - b.id));
+  }, [user]); 
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -31,6 +30,7 @@ function App() {
       }
     });
   }, []);
+  
   const clockIn = () => {
     const c = !user.clocked_in;
     fetch(`/clockin/${user.id}`, {

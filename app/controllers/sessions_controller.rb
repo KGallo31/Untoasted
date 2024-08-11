@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 
     def create
         user = Employee.find_by(username: params[:username])
-        byebug
         if user
             session[:user_id] = user.id
             render json: user,status: :ok

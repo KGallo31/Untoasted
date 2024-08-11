@@ -3,7 +3,6 @@ class EmployeesController < ApplicationController
     def create
         user = Employee.create!(employee_params)
         session[:user_id] = user.id
-        byebug
         render json: user, status: :created
     end
 
@@ -18,7 +17,6 @@ class EmployeesController < ApplicationController
 
     def clock_in
         employee = Employee.find_by(id: params[:id])
-        byebug
         employee.clocked_in = params[:clocked_in]
         employee.save
         session.delete :user_id unless employee.clocked_in
