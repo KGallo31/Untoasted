@@ -17,7 +17,7 @@ function App() {
     fetch("/items")
       .then((r) => r.json())
       .then((items) => {
-        setItems(items.sort((a, b) => a.id - b.id));
+        setItems(items.sort((a, b) =>   a.id - b.id));
       });
   }, [user]); 
 
@@ -51,17 +51,6 @@ function App() {
       });
   };
 
-  // const removeCartItem = (item) => {
-  //   const findItemIndex = (element) => {
-  //     console.log(element,item)
-  //     return element.id != item.id
-  //   }
-  //   const indexCurrentItem = cartItems.findIndex(findItemIndex)
-  //   console.log(cartItems.findIndex(findItemIndex))
-  //   const newCart = cartItems.splice(indexCurrentItem)
-  //   setCartItems(newCart)
-  // }
-
   return (
     <div>
       <Routes>
@@ -79,7 +68,6 @@ function App() {
               cartItems={cartItems}
               setIsCardPayment={setIsCardPayment}
               clockIn={clockIn}
-              // removeCartItem={removeCartItem}
             />
           }
         />

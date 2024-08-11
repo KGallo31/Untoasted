@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function ClockIn({ user, setUser,clockIn}) {
   const [pin, setPin] = useState("");
-  // const [username, setUsername] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();

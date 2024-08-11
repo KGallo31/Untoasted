@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 
-function Cart({ cartItems, isCheckOut, setCartItems,removeCartItem}) {
+function Cart({ cartItems, setCartItems,removeCartItem}) {
   const navigate = useNavigate();
-  const [checkout, setCheckout] = useState(isCheckOut);
 
   let subTotal = 0;
   let total = 0;
@@ -103,12 +102,12 @@ function Cart({ cartItems, isCheckOut, setCartItems,removeCartItem}) {
             flexGrow: "1",
           }}
         >
-          {checkout && (
+          {(
             <button className="Cart-button" onClick={handleCheckOut}>
               checkout
             </button>
           )}
-          {checkout && (
+          {(
             <button className="Cart-button"  onClick={() => setCartItems([])}>
               Clear Cart
             </button>

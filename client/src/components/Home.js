@@ -41,7 +41,6 @@ function Home({
           <Cart
             cartItems={cartItems}
             isCardPayment={isCardPayment}
-            isCheckOut={true}
             setCartItems={setCartItems}
             removeCartItem={removeCartItem}
           />
