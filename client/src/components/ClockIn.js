@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Keypad from "./Keypad";
 
-function ClockIn({ user, setUser,clockIn}) {
+function ClockIn({ user, setUser, clockIn}) {
   const [pin, setPin] = useState("");
 
   const handleSubmit = (e) => {
@@ -35,137 +36,7 @@ function ClockIn({ user, setUser,clockIn}) {
           </div>
           <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-              <table style={{ fontFamily: "impact", fontSize: "40px" }}>
-                <tr>
-                </tr>
-                <tr style={{ width: "300px" }}>
-                  <td style={{ textAlign: "right" }}>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(1)}
-                    >
-                      1
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(2)}
-                    >
-                      2
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(3)}
-                    >
-                      3
-                    </button>
-                  </td>
-                </tr>
-                <tr style={{ width: "300px" }}>
-                  <td style={{ textAlign: "right" }}>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(4)}
-                    >
-                      4
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(5)}
-                    >
-                      5
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(6)}
-                    >
-                      6
-                    </button>
-                  </td>
-                </tr>
-                <tr style={{ width: "300px" }}>
-                  <td style={{ textAlign: "right" }}>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(7)}
-                    >
-                      7
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(8)}
-                    >
-                      8
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="calc-button"
-                      style={{ width: "100%" }}
-                      type="button"
-                      onClick={() => changePin(9)}
-                    >
-                      9
-                    </button>
-                  </td>
-                </tr>
-                <tr style={{ width: "300px" }}>
-                  <td>
-                    <button
-                      type="button"
-                      className="calc-button"
-                      onClick={() => setPin("")}
-                      style={{ width: "105px" }}
-                    >
-                      clear
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      className="calc-button"
-                      onClick={() => changePin(0)}
-                      style={{ width: "105px" }}
-                    >
-                      0
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      type="submit"
-                      className="calc-button"
-                      style={{ width: "105px" }}
-                    >
-                      enter{" "}
-                    </button>
-                  </td>
-                </tr>
-              </table>
+              <Keypad onClickFunc={changePin} />
             </form>
           </div>
         </div>

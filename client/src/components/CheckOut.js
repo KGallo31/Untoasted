@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
+import Keypad from "./Keypad";
 
 function CheckOut({ setCartItems, setItems }) {
   let params = useParams();
@@ -181,120 +182,7 @@ function CheckOut({ setCartItems, setItems }) {
       <div className="check-out-flex">
         <form onSubmit={(e) => handleCashSubmit(e)}>
           <h1 style={{ alignSelf: "flex-end" }}>${cashAmount}</h1>
-          <table style={{ fontFamily: "impact", fontSize: "40px" }}>
-            <tr style={{ width: "300px" }}>
-              <td style={{ textAlign: "right" }}>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(1)}
-                >
-                  1
-                </button>
-              </td>
-              <td>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(2)}
-                >
-                  2
-                </button>
-              </td>
-              <td>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(3)}
-                >
-                  3
-                </button>
-              </td>
-            </tr>
-            <tr style={{ width: "300px" }}>
-              <td style={{ textAlign: "right" }}>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(4)}
-                >
-                  4
-                </button>
-              </td>
-              <td>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(5)}
-                >
-                  5
-                </button>
-              </td>
-              <td>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(6)}
-                >
-                  6
-                </button>
-              </td>
-            </tr>
-            <tr style={{ width: "300px" }}>
-              <td style={{ textAlign: "right" }}>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(7)}
-                >
-                  7
-                </button>
-              </td>
-              <td>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(8)}
-                >
-                  8
-                </button>
-              </td>
-              <td>
-                <button
-                  className="calc-button"
-                  type="button"
-                  onClick={() => changeCashAmount(9)}
-                >
-                  9
-                </button>
-              </td>
-            </tr>
-            <tr style={{ width: "300px" }}>
-              <td>
-                <button
-                  type="button"
-                  className="calc-button"
-                  onClick={() => setCashAmount("")}
-                >
-                  clear
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  className="calc-button"
-                  onClick={() => changeCashAmount(0)}
-                >
-                  0
-                </button>
-              </td>
-              <td>
-                <button type="submit" className="calc-button">
-                  enter{" "}
-                </button>
-              </td>
-            </tr>
-          </table>
+          <Keypad onClickFunc={changeCashAmount} />
         </form>
         <button
           className="calc-button"
