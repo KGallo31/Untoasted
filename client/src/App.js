@@ -62,8 +62,8 @@ function App() {
           path="/home"
           element={
             <Home
+            user={user}
               items={items}
-              user={user}
               setCartItems={setCartItems}
               cartItems={cartItems}
               setIsCardPayment={setIsCardPayment}

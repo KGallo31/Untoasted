@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Keypad from "./Keypad";
 
-function ClockIn({ user, setUser,clockIn}) {
+function ClockIn({ user, setUser, clockIn}) {
   const [pin, setPin] = useState("");
 
   const handleSubmit = (e) => {
@@ -35,9 +36,8 @@ function ClockIn({ user, setUser,clockIn}) {
           </div>
           <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-              <table style={{ fontFamily: "impact", fontSize: "40px" }}>
-                <tr>
-                </tr>
+              <Keypad onClickFunc={changePin} />
+              {/* <table style={{ fontFamily: "impact", fontSize: "40px" }}>
                 <tr style={{ width: "300px" }}>
                   <td style={{ textAlign: "right" }}>
                     <button
@@ -165,7 +165,7 @@ function ClockIn({ user, setUser,clockIn}) {
                     </button>
                   </td>
                 </tr>
-              </table>
+              </table> */}
             </form>
           </div>
         </div>
