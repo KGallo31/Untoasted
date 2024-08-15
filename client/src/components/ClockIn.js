@@ -20,6 +20,10 @@ function ClockIn({ user, setUser, clockIn}) {
   };
 
   const changePin = (num) => {
+    if(num === ""){
+      setPin("")
+      return;
+    }
     const currentPin = pin + num;
     setPin(currentPin);
   };
@@ -28,7 +32,7 @@ function ClockIn({ user, setUser, clockIn}) {
     return (
       <div style={{ width: "auto" }}>
         <div className="lander-flex">
-          <div style={{ flexGrow: "4" }}>
+          <div className="landing-image-container">
             <img
               src="https://res.cloudinary.com/april-skrine/image/upload/v1650481069/unlogo-removebg-preview_wyv574.png"
               alt="logo.png"
