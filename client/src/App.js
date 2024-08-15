@@ -17,16 +17,16 @@ function App() {
     fetch("/items")
       .then((r) => r.json())
       .then((items) => {
-        setItems(items.sort((a, b) =>   a.id - b.id));
+        setItems(items.sort((a, b) =>   a.id - b.id)); //Calls /Items endpoint to retrieve current options from DB 
       });
   }, [user]); 
 
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then(setUser);
+        r.json().then(setUser); // If user is logged in already bring them to clock in screen 
       } else {
-        r.json().then(() => navigate("/"));
+        r.json().then(() => navigate("/"));  // If user is not logged in then bring them to pin screen
       }
     });
   }, []);

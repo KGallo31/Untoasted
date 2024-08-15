@@ -9,7 +9,9 @@ function CheckOut({ setCartItems, setItems }) {
   let navigate = useNavigate();
   let subTotal = 0;
   let total = 0;
-  let tax = 0.06;
+  let tax = 0.06; // TODO: add endpoint to get tax rate based on users current location
+
+
   const itemPrice = [];
   const [cardNumber, setCardNumber] = useState("");
   const [cardMonth, setCardMonth] = useState("");

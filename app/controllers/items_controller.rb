@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
     before_action :authorize
 
+    // TODO: Add endpoint to allow users to modify item count
+    
+    
     def index 
         render json: Item.all, status: :ok
     end
