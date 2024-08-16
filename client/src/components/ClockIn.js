@@ -49,13 +49,14 @@ function ClockIn({ user, setUser, clockIn}) {
   }
 
   return (
-    <div>
+    <div className="welcome-content-container">
       <h1> Welcome {user.name} </h1>
+      <p> You currently have {user.total_hours === null ? 0 : user.total_hours} hours clocked in</p>
       {user.clocked_in ? (
         <button onClick={clockIn}>Clock Out</button>
       ) : (
         <Link to="/home">
-          <button className='' onClick={clockIn}>Clock In</button>
+          <button className="Cart-button" style={{width: "10%"}} onClick={clockIn}>Clock In</button>
         </Link>
       )}
     </div>
