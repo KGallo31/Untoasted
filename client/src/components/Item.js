@@ -6,7 +6,7 @@ function Item({ item, changeCart }) {
       <div  style={{width: '100&'}} >
         <img 
         src={item.image_url} 
-        alt="lol.png"
+        alt="image-link-failed.png"
         style={{width: '100%', height: '190px',borderRadius: '10px'}}
 
          />

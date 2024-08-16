@@ -107,32 +107,32 @@ function CheckOut({ setCartItems, setItems }) {
   const renderCheckOut = () => {
     if (isCard) {
       return (
-        <div class="creditCardForm">
-          <div class="heading">
+        <div className="creditCardForm">
+          <div className="heading">
             <h1>Confirm Purchase</h1>
           </div>
-          <div class="payment">
+          <div className="payment">
             <form onSubmit={handleSubmit}>
-              <div class="form-group" id="card-number-field">
+              <div className="form-group" id="card-number-field">
                 <label for="cardNumber">Card Number</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   onChange={(e) => setCardNumber(e.target.value)}
                   id="cardNumber"
                 />
               </div>
-              <div class="form-group CVV">
+              <div className="form-group CVV">
                 <label for="cvv">CVV</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   onChange={(e) => setCardCvc(e.target.value)}
                   id="cvv"
                 />
               </div>
 
-              <div class="form-group" id="expiration-date">
+              <div className="form-group" id="expiration-date">
                 <label>Expiration Date</label>
                 <select onChange={(e) => setCardMonth(e.target.value)}>
                   <option value="01">January</option>
@@ -157,7 +157,7 @@ function CheckOut({ setCartItems, setItems }) {
                   <option value="2027"> 2027</option>
                 </select>
               </div>
-              <div class="form-group" id="credit_cards">
+              <div className="form-group" id="credit_cards">
                 <img src={require("../images/visa.jpg")} id="visa" />
                 <img
                   src={require("../images/mastercard.jpg")}
@@ -165,10 +165,10 @@ function CheckOut({ setCartItems, setItems }) {
                 />
                 <img src={require("../images/amex.jpg")} id="amex" />
               </div>
-              <div class="form-group" id="pay-now">
+              <div className="form-group" id="pay-now">
                 <button
                   type="submit"
-                  class="btn btn-default"
+                  className="btn btn-default"
                   id="confirm-purchase"
                 >
                   Confirm
