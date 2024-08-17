@@ -64,6 +64,32 @@ code {
   background-color: black;
 }
 
+.receipt-page-cart-container {
+  flex-grow: 0;
+  border: 5px solid lightgray;
+  margin: 0.5%;
+  margin-right: -9px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  background-color: darkblue;
+  height: auto;
+  margin-top: 30%;
+}
+
+.receipt-page-home-button-container{
+  align-self: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: -15%;
+}
+
+.checkout-main-content-container{
+  align-self: center;
+  width: 50%;
+  margin-top: -5%;
+}
+
 .creditCardForm {
   max-width: 700px;
   background-color: blue;
@@ -163,6 +189,35 @@ code {
 .Receipt-button:hover {
   background-color: whitesmoke;
   color: #00008b;
+}
+
+.receipt-order-number-header {
+  text-align: center;
+  background-color: #00008B;
+  padding: 20px;
+  margin-top: -10px;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.receipt-body-container {
+  display: inline-block;
+  text-align: left;
+  margin: auto;
+  flex-direction: column;
+  width: 450px;
+  position: relative;
+  border: 2px solid lightgrey;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.item-container {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-flow: wrap;
 }
 
 .Item-button {

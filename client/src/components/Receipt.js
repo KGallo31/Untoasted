@@ -25,28 +25,11 @@ function Receipt({setCartItems}) {
           <img src="https://res.cloudinary.com/april-skrine/image/upload/v1650481069/unlogo-removebg-preview_wyv574.png" />
         </div>
         <div
-          style={{
-            display: "inlineBlock",
-            textAlign: "left",
-            margin: "0 auto",
-            flexDirection: "column",
-            width: "450px",
-            position: "relative",
-            border: "2px solid lightgrey",
-            padding: "10px",
-            marginTop: "10px",
-          }}
+          className="receipt-body-container"
         >
           <div>
             <h1
-              style={{
-                textAlign: "center",
-                backgroundColor: "#00008B",
-                padding: "20px",
-                marginTop: "-10px",
-                marginLeft: "-8px",
-                marginRight: "-8px",
-              }}
+              className="receipt-order-number-header"
             >
               Receipt for Order Number {params.id}
             </h1>

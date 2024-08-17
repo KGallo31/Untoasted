@@ -114,7 +114,7 @@ function CheckOut({ setCartItems, setItems }) {
           <div className="payment">
             <form onSubmit={handleSubmit}>
               <div className="form-group" id="card-number-field">
-                <label for="cardNumber">Card Number</label>
+                <label htmlFor="cardNumber">Card Number</label>
                 <input
                   type="text"
                   className="form-control"
@@ -123,7 +123,7 @@ function CheckOut({ setCartItems, setItems }) {
                 />
               </div>
               <div className="form-group CVV">
-                <label for="cvv">CVV</label>
+                <label htmlFor="cvv">CVV</label>
                 <input
                   type="text"
                   className="form-control"
@@ -149,12 +149,14 @@ function CheckOut({ setCartItems, setItems }) {
                   <option value="12">December</option>
                 </select>
                 <select onChange={(e) => setCardYear(e.target.value)}>
-                  <option value="2022"> 2022</option>
-                  <option value="2023"> 2023</option>
                   <option value="2024"> 2024</option>
                   <option value="2025"> 2025</option>
                   <option value="2026"> 2026</option>
                   <option value="2027"> 2027</option>
+                  <option value="2028"> 2028</option>
+                  <option value="2029"> 2029</option>
+                  <option value="2030"> 2030</option>
+                  <option value="2031"> 2031</option>
                 </select>
               </div>
               <div className="form-group" id="credit_cards">
@@ -220,18 +222,7 @@ function CheckOut({ setCartItems, setItems }) {
         }}
       >
         <div
-          style={{
-            flexGrow: "0",
-            border: "5px solid lightgray",
-            margin: "0.5%",
-            marginRight: "-9px",
-            padding: "10px",
-            borderRadius: "10px",
-            width: "100%",
-            backgroundColor: "darkblue",
-            height: "auto%",
-            marginTop: "30%",
-          }}
+        className="receipt-page-cart-container"
         >
           <Cart cartItems={currentCart} isCheckout={false} />
 
@@ -255,12 +246,7 @@ function CheckOut({ setCartItems, setItems }) {
           </div>
         </div>
         <div
-          style={{
-            alignSelf: "center",
-            width: "100%",
-            marginLeft: "auto",
-            marginRight: "-15%",
-          }}
+        className="receipt-page-home-button-container"
         >
           <Link to="/home">
             <button className="Cart-button">Home</button>
@@ -268,12 +254,7 @@ function CheckOut({ setCartItems, setItems }) {
         </div>
       </div>
       <div
-        style={{
-          alignSelf: "center",
-          width: "50%",
-          marginTop: "-5%",
-          marginLeft: "0%",
-        }}
+      className="checkout-main-content-container"
       >
         {renderCheckOut()}
       </div>
